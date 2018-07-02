@@ -1,0 +1,34 @@
+Sub test()
+
+Dim SlideToCheck As Slide
+Dim ShapeIndex As Integer
+Dim i As Integer
+Dim shpc As Integer
+Dim name As String
+i = 0
+shpc = 0
+name = "Picture 22" ' ***NAME***
+
+For Each SlideToCheck In ActivePresentation.Slides
+    
+    i = i + 1
+    Debug.Print "SLIDE ¹: ", i
+    
+        For ShapeIndex = SlideToCheck.Shapes.Count To 1 Step -1
+        
+            If SlideToCheck.Shapes(ShapeIndex).name = name Then 'picture
+                SlideToCheck.Shapes(ShapeIndex).Copy
+'                SlideToCheck.Shapes(ShapeIndex).Delete
+                SlideToCheck.Shapes(ShapeIndex).name = name
+            End If
+
+        
+        
+        Next
+        
+        
+        SlideToCheck.Shapes.Paste.ZOrder msoSendBackward
+        
+    Next
+
+End Sub

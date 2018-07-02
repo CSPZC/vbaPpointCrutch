@@ -1,0 +1,34 @@
+Sub test()
+
+Dim SlideToCheck As Slide
+Dim ShapeIndex As Integer
+Dim i As Integer
+Dim shpc As Integer
+
+i = 0
+shpc = 0
+
+For Each SlideToCheck In ActivePresentation.Slides
+    
+    i = i + 1
+    Debug.Print "NEXT SLIDE:", i
+    
+    For ShapeIndex = SlideToCheck.Shapes.Count To 1 Step -1
+        
+        Debug.Print "NAME: ", SlideToCheck.Shapes(ShapeIndex).Name
+        Debug.Print "ITEM: ", ShapeIndex
+        Debug.Print "TYPE: ", SlideToCheck.Shapes(ShapeIndex).Type
+
+'    Debug.Print "ID :", SlideToCheck.Shapes(SpameIndex).Id
+'    Debug.Print "Width :", SlideToCheck.Shapes(SpameIndex).Width
+    
+    ' If the shape IS a text box and DOES NOT have text
+    If SlideToCheck.Shapes(ShapeIndex).Type = msoTextBox Then
+        ' Delete the shape
+'        SlideToCheck.Shapes(ShapeIndex).Delete
+        End If
+    'Debug.Print shpc, ",", ShapeIndex
+    Next
+Next
+
+End Sub
