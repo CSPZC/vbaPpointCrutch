@@ -1,0 +1,46 @@
+Sub sexplz()
+
+Dim SlideToCheck As Slide
+Dim ShapeIndex As Integer
+Dim i As Integer
+Dim name As String
+Dim text As String
+Dim a As Integer
+
+name = InputBox("Enter NAME of ELEM to FONT_CHANGER 228(string type): ")
+text = InputBox("Enter NAME OF THE FONT : ")
+'a = InputBox("Enter 1 to CENTER text. 0 to default left bottom")
+i = 0 ' InputBox("Enter num of slide to start(integer only!, 0 = 1): ")
+
+Debug.Print "Input elem name: ", name
+Debug.Print text
+Debug.Print "Input slide num: ", i
+
+
+For Each SlideToCheck In ActivePresentation.Slides
+
+    i = i + 1
+        For ShapeIndex = SlideToCheck.Shapes.Count To 1 Step -1
+        
+            If SlideToCheck.Shapes(ShapeIndex).name = name Then 'elem name check
+                                
+                 With SlideToCheck.Shapes(ShapeIndex).TextFrame.TextRange.Font
+
+            
+                    .name = text
+            
+        
+                End With
+
+            End If
+        
+        Next
+    
+    Next
+
+i = 0
+name = ""
+
+Debug.Print "Memory Clear"
+
+End Sub
